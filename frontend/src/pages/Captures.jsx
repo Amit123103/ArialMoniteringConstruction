@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from '../api/axios';
+import api, { API_BASE_URL } from '../api/axios';
 import { useLocation, Link } from 'react-router-dom';
 import { Camera, Calendar, Tag, Activity } from 'lucide-react';
 
@@ -54,7 +54,7 @@ const Captures = () => {
 
                         <div className="relative aspect-video bg-slate-950 overflow-hidden">
                             <img
-                                src={capture.thumbnail_url || capture.image_url}
+                                src={capture.thumbnail_url ? `${API_BASE_URL}${capture.thumbnail_url}` : capture.image_url ? `${API_BASE_URL}${capture.image_url}` : ''}
                                 alt={`Capture ${capture.id}`}
                                 className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out grayscale group-hover:grayscale-0 transition-all"
                             />

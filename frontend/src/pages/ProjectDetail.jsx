@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import api from '../api/axios';
+import api, { API_BASE_URL } from '../api/axios';
 import { Camera, BarChart3, Clock, AlertCircle } from 'lucide-react';
 
 const ProjectDetail = () => {
@@ -82,7 +82,7 @@ const ProjectDetail = () => {
                             <Link to={`/captures?id=${capture.id}`} key={capture.id} className="block group">
                                 <div className="relative aspect-video bg-slate-900 overflow-hidden border border-slate-700 group-hover:border-amber-500 transition-colors">
                                     <img
-                                        src={capture.thumbnail_url || capture.image_url}
+                                        src={capture.thumbnail_url ? `${API_BASE_URL}${capture.thumbnail_url}` : capture.image_url ? `${API_BASE_URL}${capture.image_url}` : ''}
                                         alt="Capture"
                                         className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                                     />

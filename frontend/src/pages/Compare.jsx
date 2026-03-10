@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from '../api/axios';
+import api, { API_BASE_URL } from '../api/axios';
 import { renderChangeMask } from '../cv/changeAnalyzer';
 import { Layers, Scan, AlertTriangle, Activity } from 'lucide-react';
 import toast from 'react-hot-toast';
@@ -47,8 +47,10 @@ const Compare = () => {
         }
     };
 
-    const beforeImage = captures.find(c => c.id.toString() === beforeId)?.image_url;
-    const afterImage = captures.find(c => c.id.toString() === afterId)?.image_url;
+    const beforeImageUrl = captures.find(c => c.id.toString() === beforeId)?.image_url;
+    const afterImageUrl = captures.find(c => c.id.toString() === afterId)?.image_url;
+    const beforeImage = beforeImageUrl ? `${API_BASE_URL}${beforeImageUrl}` : null;
+    const afterImage = afterImageUrl ? `${API_BASE_URL}${afterImageUrl}` : null;
 
     return (
         <div className="space-y-6 max-w-6xl mx-auto relative px-4">
