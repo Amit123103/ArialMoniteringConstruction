@@ -47,6 +47,16 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files (uploaded images)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Health check / Root route
+app.get('/', (req, res) => {
+    res.json({
+        status: 'online',
+        message: 'AerialPM API is running',
+        version: '1.0.0',
+        timestamp: new Date().toISOString()
+    });
+});
+
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
