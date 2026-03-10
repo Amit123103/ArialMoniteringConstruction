@@ -24,7 +24,7 @@ router.post('/login', async (req, res) => {
 
         const token = jwt.sign(
             { id: user.id, email: user.email, role: user.role, name: user.name },
-            process.env.JWT_SECRET,
+            process.env.JWT_SECRET || 'fallback_secret_aerialpm_key_2026',
             { expiresIn: '24h' }
         );
 
@@ -67,7 +67,7 @@ router.post('/register', async (req, res) => {
         // Generate token and log them in
         const token = jwt.sign(
             { id: result.lastID, email, role: 'operator', name },
-            process.env.JWT_SECRET,
+            process.env.JWT_SECRET || 'fallback_secret_aerialpm_key_2026',
             { expiresIn: '24h' }
         );
 
