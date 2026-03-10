@@ -31,7 +31,7 @@ const PrivateRoute = ({ children }) => {
 
 function App() {
     return (
-        <Router future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
+        <Router basename={import.meta.env.BASE_URL} future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
             <Toaster position="top-right" toastOptions={{
                 style: {
                     background: '#0f172a',
