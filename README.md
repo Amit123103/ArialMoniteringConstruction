@@ -3,18 +3,6 @@
 
 ### Prerequisites
   Node.js 20+ | npm 9+ | Webcam/Camera | Chrome/Firefox
-
-### Install & Run
-  # Backend
-  cd backend
-  npm install
-  npm run dev           → http://localhost:5000
-
-  # Frontend
-  cd frontend
-  npm install
-  npm run dev           → http://localhost:5173
-
 ### Login
   admin@aerialpm.com   / Admin@123
   manager@aerialpm.com / Manager@123
