@@ -76,14 +76,16 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 // Initialize Database before starting
-try {
-    initDatabase();
-    console.log('Database initialized successfully');
-    server.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-        console.log(`WebSocket server initialized`);
-    });
-} catch (error) {
-    console.error('Failed to initialize database:', error);
-    process.exit(1);
-}
+(async () => {
+    try {
+        await initDatabase();
+        console.log('Database initialized successfully');
+        server.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
+            console.log(`WebSocket server initialized`);
+        });
+    } catch (error) {
+        console.error('Failed to initialize database:', error);
+        process.exit(1);
+    }
+})();
